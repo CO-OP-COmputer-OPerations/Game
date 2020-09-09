@@ -12,13 +12,13 @@ Players must be able to navigate the game using a simple control system based on
 
 
 Your goal is to display an understanding of the following programming tools used throughout your game:<br/>
-Exemplary coding etiquette showing good indenting, consistent block bracing style, data type and class naming conventions and appropriate use of comments<br/>
-At least one text-basedmenu<br/>
-User (player)input<br/>
-Appropriate selection of and use ofvariables<br/>
-Selection statements including switch, if, else if and nestedif<br/>
-Iteration with the appropriate type ofloops<br/>
-Use of randomnumbers<br/>
-Arrays<br/>
-Functions<br/>
-Classes and methods
+•Exemplary coding etiquette showing good indenting, consistent block bracing style, data type and class naming conventions and appropriate use of comments<br/>
+•At least one text-basedmenu<br/>
+•User (player)input<br/>
+•Appropriate selection of and use ofvariables<br/>
+•Selection statements including switch, if, else if and nestedif<br/>
+•Iteration with the appropriate type ofloops<br/>
+•Use of randomnumbers<br/>
+•Arrays<br/>
+•Functions<br/>
+•Classes and methods
