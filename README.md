@@ -11,14 +11,14 @@ Your game must have a clear objective (to win the game), and potentially may hav
 Players must be able to navigate the game using a simple control system based on the four main points of a compass (north(n), south(s), east(e) & west(w)), and each time a location and any available items or interactions is visited a description of the location must be printed to the screen. Once an item has been picked up, or a foe vanquished, subsequent visits to that location must omit the item or npc from the description (or in the case of a slain enemy, change its state to dead in the description).
 
 
-Your goal is to display an understanding of the following programming tools used throughout your game:
-Exemplary coding etiquette showing good indenting, consistent block bracing style, data type and class naming conventions and appropriate use ofcomments
-At least one text-basedmenu
-User (player)input
-Appropriate selection of and use ofvariables
-Selection statements including switch, if, else if and nestedif
-Iteration with the appropriate type ofloops
-Use of randomnumbers
-Arrays
-Functions
+Your goal is to display an understanding of the following programming tools used throughout your game:<br/>
+Exemplary coding etiquette showing good indenting, consistent block bracing style, data type and class naming conventions and appropriate use of comments<br/>
+At least one text-basedmenu<br/>
+User (player)input<br/>
+Appropriate selection of and use ofvariables<br/>
+Selection statements including switch, if, else if and nestedif<br/>
+Iteration with the appropriate type ofloops<br/>
+Use of randomnumbers<br/>
+Arrays<br/>
+Functions<br/>
 Classes and methods
