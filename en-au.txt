@@ -1,0 +1,3 @@
+unknown_command=I don't know what you mean, try again.
+exitingGame=Exiting Game...
+gameStartText=The game has started, you are somehow a %s.

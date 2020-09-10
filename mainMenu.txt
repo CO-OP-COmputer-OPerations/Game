@@ -1,0 +1,6 @@
+Welcome to The Linear Rock Game!
+Commands:
+ - Start        - Start the Game
+ - Instructions - Learn how to play The Linear Rock Game
+ - Options      - List all options
+ - Exit         - To close the game
