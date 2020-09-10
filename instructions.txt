@@ -1,0 +1,28 @@
+Welcome to the Linear Rock Game!
+
+
+You can journey in 4 directions during your adventure: 
+
+North, South, East and West 
+
+When not currently in an interaction or event simply type
+
+“Go (North/South/East/West)” 
+
+You will then travel to your chosen destination, unless of course your chosen direction includes non-linear territory. Which is extremely dangerous and cannot be traversed by players. 
+
+
+Other interactions will be easy to engage with, most requiring a yes or no response (simply type y/n). 
+
+
+Your goal is to get the linear rock to its linear home.
+ 
+
+At any time, you can type "options" to reveal: 
+
+Instructions
+
+End the Game
+
+
+Good luck getting the linear rock home!
