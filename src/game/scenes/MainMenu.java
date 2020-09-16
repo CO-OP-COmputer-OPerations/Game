@@ -14,7 +14,7 @@ public class MainMenu extends Scene
     }
 
     @Override
-    public boolean handleCommand(String command, String[]... args)
+    public boolean handleCommand(String command, String... args)
     {
         switch (command)
         {

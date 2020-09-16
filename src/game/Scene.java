@@ -11,7 +11,7 @@ public abstract class Scene
     public ArrayList<String> Options = new ArrayList<String>();
     public abstract void start();
     public abstract void showDetails();
-    public abstract boolean handleCommand(String command, String[]... args);
+    public abstract boolean handleCommand(String command, String... args);
 
     public static void StartScene(Scene scene)
     {
@@ -32,14 +32,18 @@ public abstract class Scene
             if (input.length() > 0)
             {
                 String command = input.toLowerCase();
+                String[] args = new String[0];
                 if (input.contains(" "))
+                {
                     command = command.substring(0, command.indexOf(" "));
+                    args = input.substring(command.length() + 1).split(" ");
+                }
                 if (command.equals("options"))
                 {
                     System.out.println("Options: " + getOptionsString());
                     continue;
                 }
-                if (!isOptionValid(command) || !handleCommand(command, input.substring(command.length()).split(" ")))
+                if (!isOptionValid(command) || !handleCommand(command, args))
                 {
                     System.out.println(Helpers.Localise("unknown_command"));
                 }
@@ -57,8 +61,12 @@ public abstract class Scene
     public boolean isOptionValid(String option)
     {
         for (String option_ : Options)
+        {
+            if (option_.contains(" "))
+                option_ = option_.substring(0, option_.indexOf(" "));
             if (option.equalsIgnoreCase(option_))
                 return true;
+        }
         return false;
     }
 

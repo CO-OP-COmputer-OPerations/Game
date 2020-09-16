@@ -1,3 +1,5 @@
 unknown_command=I don't know what you mean, try again.
 exitingGame=Exiting Game...
 gameStartText=The game has started, you are somehow a %s.
+unknown_direction=Unknown direction name! Direction names can look like: north, n, up, u.
+invalid_direction=You can not go that direction, there is something in the way! Type "options" for a list of options.

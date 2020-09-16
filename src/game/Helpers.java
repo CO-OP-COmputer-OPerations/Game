@@ -49,4 +49,15 @@ public class Helpers
         return result;
     }
 
+    public static void sleep(int mils)
+    {
+        try
+        {
+            Thread.sleep(mils);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }
