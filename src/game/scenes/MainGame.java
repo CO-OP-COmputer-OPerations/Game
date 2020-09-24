@@ -37,6 +37,9 @@ public class MainGame extends Scene
     public void showDetails()
     {
         UpdateDirectionOptions();
+        showPositionMessage();
+        showDirectionOptions();
+        game.map.setLocationVisited(game.player);
     }
 
     @Override
@@ -53,11 +56,11 @@ public class MainGame extends Scene
                     break;
 
                 // Get direction from Text
-                Direction direction = ConvertDirections(args[0]);
+                Direction direction = convertDirections(args[0]);
                 if (direction != null)
                 {
                     // Check if its valid
-                    if (CheckValidDirection(direction))
+                    if (checkValidDirection(direction))
                     {
                         // Check direction
                         switch (direction)
@@ -90,6 +93,34 @@ public class MainGame extends Scene
         }
         return true;
     }
+    
+    public void showPositionMessage()
+    {
+        char row = (char)(game.player.positionX + 'a');
+        String location = row + "" + (game.player.positionY + 1);
+        if (game.map.getLocationVisited(game.player))
+            System.out.println(Helpers.Localise(row + "" + (game.player.positionY + 1) + "_revisiting"));
+        else
+            System.out.println(Helpers.Localise(row + "" + (game.player.positionY + 1) + "_first_time"));
+    }
+
+    public void showDirectionOptions()
+    {
+        String message = "Would you like to head ";
+        Direction[] directions = getDirections(game.map.mapCollisions[game.player.positionX][game.player.positionY]);
+        for (int i = 0; i < directions.length; ++i)
+        {
+            if (i != 0)
+            {
+                if (i == directions.length - 1)
+                    message += " or ";
+                else
+                    message += ", ";
+            }
+            message += directions[i].toString();
+        }
+        System.out.println("* " + message + "?");
+    }
 
     public void UpdateDirectionOptions()
     {
@@ -98,14 +129,14 @@ public class MainGame extends Scene
             Options.remove("Go " + Direction.values()[i]);
 
         // Add Go options
-        for (Direction direction : GetDirections(game.map.mapCollisions[game.player.positionX][game.player.positionY]))
+        for (Direction direction : getDirections(game.map.mapCollisions[game.player.positionX][game.player.positionY]))
         {
             Options.add("Go " + direction);
         }
     }
 
     // Converts direction bits to an array of directions
-    public Direction[] GetDirections(int bits)
+    public Direction[] getDirections(int bits)
     {
         ArrayList<Direction> directions = new ArrayList<Direction>();
         for (int i = 0; i < 4; ++i)
@@ -118,7 +149,7 @@ public class MainGame extends Scene
     }
 
     // Converts text to direction
-    public Direction ConvertDirections(String text)
+    public Direction convertDirections(String text)
     {
         switch (text)
         {
@@ -145,13 +176,14 @@ public class MainGame extends Scene
             default:
                 break;
         }
+        // Invalid direction
         return null;
     }
 
     // Converts string to a valid direction
-    public boolean CheckValidDirection(Direction dir)
+    public boolean checkValidDirection(Direction dir)
     {
-        for (Direction direction : GetDirections(game.map.mapCollisions[game.player.positionX][game.player.positionY]))
+        for (Direction direction : getDirections(game.map.mapCollisions[game.player.positionX][game.player.positionY]))
         {
             if (dir == direction)
                 return true;

@@ -14,9 +14,14 @@ public class Helpers
 
     public static void Start()
     {
-        for (String line : readTextFile("en-au.txt").replace("\r", "").split("\n"))
+        loadTextMap("en-au.txt");
+    }
+
+    public static void loadTextMap(String path)
+    {
+        for (String line : readTextFile(path).replace("\r", "").split("\n"))
         {
-            TextMap.put(line.substring(0, line.indexOf("=")), line.substring(line.indexOf("=") + 1));
+            TextMap.put(line.substring(0, line.indexOf("=")), line.substring(line.indexOf("=") + 1).replace("\\n", "\n"));
         }
     }
 

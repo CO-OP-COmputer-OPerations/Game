@@ -10,6 +10,7 @@ public class Game
     {
         player.init();
         map.loadMap("mapData.txt");
+        Helpers.loadTextMap("mapMessages.txt");
     }
 
 

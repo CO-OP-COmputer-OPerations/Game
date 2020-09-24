@@ -1,0 +1,10 @@
+a1_first_time=* You proceeded though the North path through a forest\n\nWhile walking you see a village to the East of you and what seems to be an endless path through the forest on each other direction with the only other way which is going back
+a1_revisiting=* You come across the remains of the wagon.\n\n* Nothing for you to see here.
+a2_first_time=* As you continue you find yourself next to the base of a large mountain to your right and dense forest. You also can see a trail of smoke not too far ahead of you through the dense forest. That’s probably where the village is at.
+a2_revisiting=* *INSET TEXT*
+a3_first_time=* As you continue to travel along the North path you encounter another traveler who is resting on the side of the path. The traveler warns you that there is a village ahead not far north. He also stated that they aren’t too friendly to strangers.
+a3_revisiting=* You walk past the location where the random traveler was at and he was nowhere to be seen.
+a4_first_time=* As you continue you discover the base of a large mountain to your right and dense forest. Better not head off the path and end up lost.
+a4_revisiting=* You have reached a path next to the base of the mountain.
+a5_first_time=**** Something should be here ****
+a5_revisiting=* You come across the remains of the wagon.\n\n* Nothing for you to see here.
