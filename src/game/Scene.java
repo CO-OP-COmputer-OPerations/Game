@@ -55,7 +55,7 @@ public abstract class Scene
     {
         running = false;
         Main.Scenes.remove(this);
-        System.out.println("Closed Scene!");
+        //System.out.println("Closed Scene!");
     }
 
     public boolean isOptionValid(String option)

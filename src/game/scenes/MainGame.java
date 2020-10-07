@@ -1,9 +1,6 @@
 package game.scenes;
 
-import game.Direction;
-import game.Game;
-import game.Helpers;
-import game.Scene;
+import game.*;
 
 import java.util.ArrayList;
 
@@ -78,6 +75,7 @@ public class MainGame extends Scene
                                 --game.player.positionX;
                                 break;
                         }
+                        game.map.processMapTile(game.player, Action.Walk);
                     }else
                     {
                         System.out.println(Helpers.Localise("invalid_direction"));
@@ -86,7 +84,7 @@ public class MainGame extends Scene
                 {
                     System.out.println(Helpers.Localise("unknown_direction"));
                 }
-                System.out.printf("%x, %x: %s\n", game.player.positionX, game.player.positionY, game.map.mapData[game.player.positionX][game.player.positionY]);
+                //System.out.printf("%x, %x: %s\n", game.player.positionX, game.player.positionY, game.map.mapData[game.player.positionX][game.player.positionY]);
                 break;
             default:
                 return false;
