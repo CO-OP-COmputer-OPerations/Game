@@ -3,6 +3,7 @@ package game;
 import game.item.Item;
 import game.item.ItemKnife;
 import game.item.ItemLegendaryRock;
+import game.scenes.SceneBattleBear;
 import game.scenes.SceneSimpleDialog;
 
 public class Map
@@ -79,20 +80,35 @@ public class Map
                     break;
                 case Bear:
                     // Bear battle
+                    Scene.startScene(new SceneBattleBear(player));
                     break;
                 case Wishing_Well:
-                    // TODO: Add question key
                     // Ask if the knife should be enchanted
-                    if (SceneSimpleDialog.OpenDialog(new SceneSimpleDialog("testthing", new String[]{"Yes", "No"})).equalsIgnoreCase("yes"))
+                    if (SceneSimpleDialog.OpenDialog(new SceneSimpleDialog("wishing_well_entering", new String[]{"Yes", "No"})).equalsIgnoreCase("yes"))
                     {
-                        System.out.println(Helpers.Localise("enchant_working"));
-                        Helpers.sleep(1000);
                         // Get knife item
                         Item knife = player.getItem("knife");
                         // Check if the knife is really a knife object
                         if (knife instanceof ItemKnife)
                             ((ItemKnife) knife).enchanted = true;
-                        System.out.println(Helpers.Localise("enchant_finished"));
+                        System.out.println(Helpers.Localise("wishing_well_finished"));
+                    }
+                    else
+                    {
+                        System.out.println(Helpers.Localise("wishing_well_canceled"));
+                    }
+                    break;
+                case Rock:
+                    // Rock
+                    if (player.hasItem("legendary_rock"))
+                    {
+                        // Already dug the rock
+                        System.out.println(Helpers.Localise("a"));
+                    }
+                    else
+                    {
+                        // Have not yet dug the rock
+                        System.out.println(Helpers.Localise("b"));
                     }
                     break;
                 default:
@@ -103,7 +119,7 @@ public class Map
         {
             if (mapData[player.positionX][player.positionY] == Locations.Rock)
             {
-                if (!player.hasItem("legendary_rock"))
+                if (!player.hasItem("legendary_rock") && player.hasItem("shovel"))
                     player.inventory.add(new ItemLegendaryRock());
             }
         }

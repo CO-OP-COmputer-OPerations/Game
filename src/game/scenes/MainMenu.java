@@ -2,7 +2,6 @@ package game.scenes;
 
 import game.Game;
 import game.Helpers;
-import game.Main;
 import game.Scene;
 
 public class MainMenu extends Scene
@@ -19,7 +18,7 @@ public class MainMenu extends Scene
         switch (command)
         {
             case "start":
-                Scene.StartScene(new MainGame(new Game()));
+                Scene.startScene(new MainGame(new Game()));
                 break;
             case "instructions":
                 System.out.println(Helpers.readTextFile("instructions.txt"));

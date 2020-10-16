@@ -13,7 +13,7 @@ public abstract class Scene
     public abstract void showDetails();
     public abstract boolean handleCommand(String command, String... args);
 
-    public static void StartScene(Scene scene)
+    public static void startScene(Scene scene)
     {
         Main.Scenes.add(scene);
         scene.run();

@@ -1,6 +1,5 @@
 package game.scenes;
 
-import game.Game;
 import game.Helpers;
 import game.Scene;
 
@@ -20,7 +19,7 @@ public class SceneSimpleDialog extends Scene
 
     public static String OpenDialog(SceneSimpleDialog scene)
     {
-        Scene.StartScene(scene);
+        Scene.startScene(scene);
         return scene.answer;
     }
 
