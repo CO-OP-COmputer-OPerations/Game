@@ -42,6 +42,14 @@ public class MainGame extends Scene
     @Override
     public boolean handleCommand(String command, String... args)
     {
+        // Get direction from Text
+        Direction direction = convertDirections(command);
+        if (direction != null)
+        {
+            processDirection(direction);
+            return true;
+        }
+
         switch (command)
         {
             case "exit":
@@ -53,33 +61,10 @@ public class MainGame extends Scene
                     break;
 
                 // Get direction from Text
-                Direction direction = convertDirections(args[0]);
+                direction = convertDirections(args[0]);
                 if (direction != null)
                 {
-                    // Check if its valid
-                    if (checkValidDirection(direction))
-                    {
-                        // Check direction
-                        switch (direction)
-                        {
-                            case North:
-                                --game.player.positionY;
-                                break;
-                            case East:
-                                ++game.player.positionX;
-                                break;
-                            case South:
-                                ++game.player.positionY;
-                                break;
-                            case West:
-                                --game.player.positionX;
-                                break;
-                        }
-                        game.map.processMapTile(game.player, Action.Walk);
-                    }else
-                    {
-                        System.out.println(Helpers.Localise("invalid_direction"));
-                    }
+                    processDirection(direction);
                 }else
                 {
                     System.out.println(Helpers.Localise("unknown_direction"));
@@ -91,7 +76,35 @@ public class MainGame extends Scene
         }
         return true;
     }
-    
+
+    public void processDirection(Direction direction)
+    {
+        // Check if its valid
+        if (checkValidDirection(direction))
+        {
+            // Check direction
+            switch (direction)
+            {
+                case North:
+                    --game.player.positionY;
+                    break;
+                case East:
+                    ++game.player.positionX;
+                    break;
+                case South:
+                    ++game.player.positionY;
+                    break;
+                case West:
+                    --game.player.positionX;
+                    break;
+            }
+            game.map.processMapTile(game.player, Action.Walk);
+        }else
+        {
+            System.out.println(Helpers.Localise("invalid_direction"));
+        }
+    }
+
     public void showPositionMessage()
     {
         char row = (char)(game.player.positionX + 'a');
@@ -149,7 +162,7 @@ public class MainGame extends Scene
     // Converts text to direction
     public Direction convertDirections(String text)
     {
-        switch (text)
+        switch (text.toLowerCase())
         {
             case "left":
             case "l":

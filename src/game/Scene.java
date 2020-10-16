@@ -43,7 +43,7 @@ public abstract class Scene
                     System.out.println("Options: " + getOptionsString());
                     continue;
                 }
-                if (!isOptionValid(command) || !handleCommand(command, args))
+                if (/*!isOptionValid(command) || */!handleCommand(command, args))
                 {
                     System.out.println(Helpers.Localise("unknown_command"));
                 }
