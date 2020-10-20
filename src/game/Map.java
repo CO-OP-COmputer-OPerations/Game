@@ -4,6 +4,7 @@ import game.item.Item;
 import game.item.ItemKnife;
 import game.item.ItemLegendaryRock;
 import game.scenes.SceneBattleBear;
+import game.scenes.SceneShop;
 import game.scenes.SceneSimpleDialog;
 import game.scenes.SceneVillage;
 
@@ -70,6 +71,7 @@ public class Map
                     break;
                 case Shop:
                     // Buy things
+                    Scene.startScene(new SceneShop(player));
                     break;
                 case Goal:
                     // End game

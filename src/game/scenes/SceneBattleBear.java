@@ -63,9 +63,9 @@ public class SceneBattleBear extends Scene
                     switch (args[0])
                     {
                         case "knife":
-                            amount = new Random().nextInt(300) + 1;
+                            amount = new Random().nextInt(250) + 100;
                             bearHealth -= amount;
-                            System.out.printf(Helpers.Localise("battle_fist"), "The Big Flipping Radical Bear", amount, bearHealth);
+                            System.out.printf(Helpers.Localise("battle_knife"), "The Big Flipping Radical Bear", amount, bearHealth);
                             break;
                         case "fist":
                             amount = new Random().nextInt(20) + 1;

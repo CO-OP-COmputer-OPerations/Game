@@ -10,6 +10,7 @@ wishing_well_canceled=* You decide to not throw in the knife.
 battle_running=* You are now running away as fast as you can from the battle scene.
 battle_start=* You just encountered a battle scene with %s what are you going to do?\n* Options: %s\n
 battle_fist=* You just hit %s with your fist, but it only dealt %d damage now at %d, this may have not been a good idea...\n
+battle_knife=* You just hit %s with your knife which dealt %d damage now at %d. Try hitting it again.\n
 battle_dead=* %s just got disintegrated.\n
 battle_fail=* You gave up on the battle as you noticed you are going to get killed. You left to have a rest and heal.
 battle_hit=* %s hit you back which dealt %d damage to you. You are now at %d.\n

@@ -70,7 +70,6 @@ public class SceneVillage extends Scene
                 System.out.println(Helpers.Localise(!visitedStore ? "village_store_first_time" : "village_store_revisiting"));
                 visitedStore = true;
                 player.inventory.add(new ItemKnife());
-                exitScene();
                 return true;
             case "vault":
                 // Get knife item
@@ -92,6 +91,7 @@ public class SceneVillage extends Scene
                 }
                 return true;
             case "leave":
+                --player.positionX;
                 exitScene();
                 return true;
             default:
