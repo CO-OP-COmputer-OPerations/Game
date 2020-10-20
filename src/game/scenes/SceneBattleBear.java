@@ -45,7 +45,7 @@ public class SceneBattleBear extends Scene
         if (player.health <= 0)
         {
             System.out.println(Helpers.Localise("battle_fail"));
-            player.health = 100;
+            player.health = 1000;
             exitScene();
         }
     }
