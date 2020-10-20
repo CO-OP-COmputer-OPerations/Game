@@ -78,6 +78,8 @@ public class SceneBattleBear extends Scene
                 }
                 int amount = new Random().nextInt(300) + 1;
                 player.health -= amount;
+                if (player.health < 0)
+                    player.health = 0;
                 System.out.printf(Helpers.Localise("battle_hit"), "The Big Flipping Radical Bear", amount, player.health);
                 return true;
             case "run":

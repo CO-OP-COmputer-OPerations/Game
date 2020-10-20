@@ -78,6 +78,9 @@ public class MainGame extends Scene
             case "inventory":
                 showInventory(game.player);
                 break;
+            case "shovel":
+                game.map.processMapTile(game.player, Action.Dig);
+                break;
             case "debug":
                 if (!game.player.hasItem("knife"))
                 {

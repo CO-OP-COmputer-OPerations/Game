@@ -69,7 +69,9 @@ public class SceneVillage extends Scene
             case "store":
                 System.out.println(Helpers.Localise(!visitedStore ? "village_store_first_time" : "village_store_revisiting"));
                 visitedStore = true;
-                player.inventory.add(new ItemKnife());
+                // Give knife if you don't have one
+                if (!player.hasItem("knife"))
+                    player.inventory.add(new ItemKnife());
                 return true;
             case "vault":
                 // Get knife item

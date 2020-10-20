@@ -53,6 +53,7 @@ public class SceneShop extends Scene
                 return true;
             case "leave":
                 exitScene();
+                --player.positionX;
                 return true;
             default:
                 break;

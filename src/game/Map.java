@@ -142,8 +142,16 @@ public class Map
             if (mapData[player.positionX][player.positionY] == Locations.Rock)
             {
                 if (!player.hasItem("legendary_rock") && player.hasItem("shovel"))
+                {
                     player.inventory.add(new ItemLegendaryRock());
+                    System.out.println(Helpers.Localise("shovel_got_a_rock"));
+                }
+                else
+                    // Do second ending
+                    System.out.println(Helpers.Localise(""));
             }
+            else
+                System.out.println(Helpers.Localise("shovel_not_a_rock"));
         }
     }
 }
