@@ -5,6 +5,7 @@ import game.item.ItemKnife;
 import game.item.ItemLegendaryRock;
 import game.scenes.SceneBattleBear;
 import game.scenes.SceneSimpleDialog;
+import game.scenes.SceneVillage;
 
 public class Map
 {
@@ -65,6 +66,7 @@ public class Map
             {
                 case Village:
                     // Stuff
+                    Scene.startScene(new SceneVillage(player));
                     break;
                 case Shop:
                     // Buy things
@@ -79,8 +81,16 @@ public class Map
                     // Boss
                     break;
                 case Bear:
-                    // Bear battle
-                    Scene.startScene(new SceneBattleBear(player));
+                    if (!visitedLocations[player.positionX][player.positionY])
+                    {
+                        // Bear battle
+                        SceneBattleBear battle = new SceneBattleBear(player);
+                        Scene.startScene(battle);
+                        // TODO: Try not hardcode positions
+                        // Move down if the bear didn't die
+                        if (!battle.battleCompleted)
+                            ++player.positionY;
+                        }
                     break;
                 case Wishing_Well:
                     // Ask if the knife should be enchanted
@@ -90,13 +100,23 @@ public class Map
                         Item knife = player.getItem("knife");
                         // Check if the knife is really a knife object
                         if (knife instanceof ItemKnife)
-                            ((ItemKnife) knife).enchanted = true;
-                        System.out.println(Helpers.Localise("wishing_well_finished"));
+                        {
+                            if (((ItemKnife) knife).enchanted)
+                                System.out.println(Helpers.Localise("wishing_well_revisit"));
+                            else
+                            {
+                                ((ItemKnife) knife).enchanted = true;
+                                System.out.println(Helpers.Localise("wishing_well_finished"));
+                            }
+                        }
                     }
                     else
                     {
                         System.out.println(Helpers.Localise("wishing_well_canceled"));
                     }
+                    // TODO: Try not hardcode positions
+                    // Move right if the bear didn't die
+                    ++player.positionX;
                     break;
                 case Rock:
                     // Rock

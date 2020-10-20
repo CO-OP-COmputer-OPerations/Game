@@ -1,6 +1,8 @@
 package game.scenes;
 
 import game.*;
+import game.item.Item;
+import game.item.ItemKnife;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,8 @@ public class MainGame extends Scene
         }
 
         Options.add("Exit");
+        Options.add("Inventory");
+        Options.add("Debug");
         System.out.printf(Helpers.Localise("gameStartText"), "F");
         System.out.println();
     }
@@ -71,10 +75,31 @@ public class MainGame extends Scene
                 }
                 //System.out.printf("%x, %x: %s\n", game.player.positionX, game.player.positionY, game.map.mapData[game.player.positionX][game.player.positionY]);
                 break;
+            case "inventory":
+                showInventory(game.player);
+                break;
+            case "debug":
+                if (!game.player.hasItem("knife"))
+                {
+                    ItemKnife knife = new ItemKnife();
+                    knife.enchanted = true;
+                    game.player.inventory.add(knife);
+                }
+                break;
             default:
                 return false;
         }
         return true;
+    }
+
+    public void showInventory(Player player)
+    {
+        ArrayList<String> names = new ArrayList<String>();
+        for (Item item : player.inventory)
+            names.add(item.getItemName());
+        String[] namesArray = new String[names.size()];
+        names.toArray(namesArray);
+        System.out.println("Inventory: " + String.join(", ", namesArray));
     }
 
     public void processDirection(Direction direction)
@@ -200,5 +225,12 @@ public class MainGame extends Scene
                 return true;
         }
         return false;
+    }
+
+    // Force any option
+    @Override
+    public boolean isOptionValid(String option)
+    {
+        return true;
     }
 }

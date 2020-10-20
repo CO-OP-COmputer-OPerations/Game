@@ -1,21 +1,19 @@
 package game.scenes;
 
-import game.Game;
 import game.Helpers;
 import game.Player;
 import game.Scene;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class SceneBattleBear extends Scene
 {
 
-    public boolean IsRunningAway = false;
+    public boolean battleCompleted = false;
     public Player player;
 
     // Bear data. It's stored here as it doesn't need to be persistent
-    public int bearHealth = 100;
+    public int bearHealth = 500;
 
     public SceneBattleBear(Player player)
     {
@@ -29,6 +27,10 @@ public class SceneBattleBear extends Scene
             Options.add("Use Knife");
         Options.add("Use Fist");
         Options.add("Run");
+        Options.add("Debug");
+
+        System.out.printf(Helpers.Localise("battle_start"), "The Big Flipping Radical Bear", getOptionsString());
+        showDetails();
     }
 
     @Override
@@ -36,7 +38,14 @@ public class SceneBattleBear extends Scene
     {
         if (bearHealth <= 0)
         {
-            System.out.printf(Helpers.Localise("battle_dead"), "Bear");
+            battleCompleted = true;
+            System.out.printf(Helpers.Localise("battle_dead"), "The Big Flipping Radical Bear");
+            exitScene();
+        }
+        if (player.health <= 0)
+        {
+            System.out.println(Helpers.Localise("battle_fail"));
+            player.health = 100;
             exitScene();
         }
     }
@@ -50,23 +59,33 @@ public class SceneBattleBear extends Scene
             case "use":
                 if (args.length > 0)
                 {
+                    int amount = 0;
                     switch (args[0])
                     {
                         case "knife":
-                            return true;
-                        case "fist":
-                            int amount = new Random().nextInt(3) + 1;
+                            amount = new Random().nextInt(300) + 1;
                             bearHealth -= amount;
-                            System.out.printf(Helpers.Localise("battle_fist"), "Bear", amount, bearHealth);
-                            return true;
+                            System.out.printf(Helpers.Localise("battle_fist"), "The Big Flipping Radical Bear", amount, bearHealth);
+                            break;
+                        case "fist":
+                            amount = new Random().nextInt(20) + 1;
+                            bearHealth -= amount;
+                            System.out.printf(Helpers.Localise("battle_fist"), "The Big Flipping Radical Bear", amount, bearHealth);
+                            break;
                         default:
                             break;
                     }
                 }
-                break;
+                int amount = new Random().nextInt(300) + 1;
+                player.health -= amount;
+                System.out.printf(Helpers.Localise("battle_hit"), "The Big Flipping Radical Bear", amount, player.health);
+                return true;
             case "run":
-                IsRunningAway = true;
                 System.out.println(Helpers.Localise("battle_running"));
+                exitScene();
+                return true;
+            case "debug":
+                battleCompleted = true;
                 exitScene();
                 return true;
             default:

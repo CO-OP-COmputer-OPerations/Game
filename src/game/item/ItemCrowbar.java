@@ -20,7 +20,7 @@ public class ItemCrowbar extends Item
     @Override
     public int getItemValue()
     {
-        return 2200;
+        return 120;
     }
 
     @Override

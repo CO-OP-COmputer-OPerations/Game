@@ -20,7 +20,7 @@ public class ItemShovel extends Item
     @Override
     public int getItemValue()
     {
-        return 1300;
+        return 230;
     }
 
     @Override

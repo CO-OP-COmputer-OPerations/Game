@@ -27,6 +27,8 @@ public abstract class Scene
         while (running)
         {
             showDetails();
+            if (!running)
+                break;
             System.out.print("> ");
             String input = Main.MainScanner.nextLine();
             if (input.length() > 0)
@@ -43,7 +45,7 @@ public abstract class Scene
                     System.out.println("Options: " + getOptionsString());
                     continue;
                 }
-                if (/*!isOptionValid(command) || */!handleCommand(command, args))
+                if (!isOptionValid(command) || !handleCommand(command, args))
                 {
                     System.out.println(Helpers.Localise("unknown_command"));
                 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Player
 {
 
+    public double money = 0;
     public int positionX = 0;
     public int positionY = 4;
     public int health = 1000;
@@ -35,6 +36,7 @@ public class Player
 
     public void init()
     {
+        money = 0;
         positionX = 0;
         positionY = 4;
         health = 1000;
