@@ -32,8 +32,6 @@ public class MainGame extends Scene
         Options.add("Exit");
         Options.add("Inventory");
         Options.add("Debug");
-        if (game.player.hasItem("shovel"))
-            Options.add("Shovel");
         System.out.printf(Helpers.Localise("gameStartText"), "F");
         System.out.println();
     }
@@ -41,6 +39,12 @@ public class MainGame extends Scene
     @Override
     public void showDetails()
     {
+        if (game.map.isGameCompleted)
+        {
+            // Game Completed
+            exitScene();
+        }
+
         UpdateDirectionOptions();
         showPositionMessage();
         showDirectionOptions();
@@ -85,8 +89,9 @@ public class MainGame extends Scene
                 showInventory(game.player);
                 break;
             case "shovel":
-                game.map.processMapTile(game.player, Action.Dig);
-                break;
+                if (game.player.hasItem("shovel"))
+                    game.map.processMapTile(game.player, Action.Dig);
+                return false;
             case "debug":
                 if (!game.player.hasItem("knife"))
                 {
@@ -114,6 +119,7 @@ public class MainGame extends Scene
         String[] namesArray = new String[names.size()];
         names.toArray(namesArray);
         System.out.println("Inventory: " + String.join(", ", namesArray));
+        System.out.println("Money: " + player.money);
     }
 
     public void processDirection(Direction direction)

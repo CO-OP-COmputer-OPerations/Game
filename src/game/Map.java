@@ -13,6 +13,8 @@ public class Map
 
     // Map Data
     public boolean isDoorOpen = false;
+    public boolean isDioDead = false;
+    public boolean isGameCompleted = false;
 
     public enum Locations
     {
@@ -76,9 +78,39 @@ public class Map
                     break;
                 case Goal:
                     // End game
+                    if (SceneSimpleDialog.OpenDialog(new SceneSimpleDialog(isDioDead ? "ending_dio" : "ending_dig", new String[]{"Yes", "No"})).equalsIgnoreCase("yes"))
+                    {
+                        System.out.println(Helpers.Localise("ending_two"));
+                        Helpers.sleep(1000);
+                        isGameCompleted = true;
+                    }
+                    else
+                    {
+                        // TODO: Try not hardcode positions
+                        // Move down if user said no
+                        ++player.positionY;
+                    }
                     break;
                 case Fortune_Teller:
                     // Tell things
+                    System.out.println(Helpers.Localise("ft_s"));
+                    if (player.hasItem("knife") && !((ItemKnife)player.getItem("knife")).enchanted)
+                    {
+                        System.out.println(Helpers.Localise("ft_1"));
+                    }else if (player.hasItem("knife") && ((ItemKnife)player.getItem("knife")).enchanted &&
+                              player.hasItem("crowbar") || player.hasItem("shovel"))
+                    {
+                        System.out.println(Helpers.Localise("ft_2"));
+                    }
+                    else if (player.hasItem("knife") && ((ItemKnife)player.getItem("knife")).enchanted)
+                    {
+                        System.out.println(Helpers.Localise("ft_3"));
+                    }
+                    System.out.println(Helpers.Localise("ft_e"));
+                    Helpers.sleep(2000);
+                    // TODO: Try not hardcode positions
+                    // Move down
+                    ++player.positionY;
                     break;
                 case Door:
                     // Door
@@ -120,6 +152,7 @@ public class Map
                         // Move left if dio didn't die
                         if (!battle.battleCompleted)
                             --player.positionX;
+                        isDioDead = battle.battleCompleted;
                     }
                     break;
                 case Bear:

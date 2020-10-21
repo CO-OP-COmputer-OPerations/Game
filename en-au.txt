@@ -43,5 +43,12 @@ door_question_n=* You decided not to use the crowbar and leave the door alone. *
 boss_dialogue_1=* As you pass the gates you feel a strong pressure coming from the inside of the mansion (or tents LOL) *\n* You take one step into the mansion *\n  MAN: "Oh, so you are approaching me"\n* As he speaks, chills are sent down your spine *\n* You continued to walk for a bit, soon after the man starts to also approach you *
 boss_dialogue_2=* You were upfront and personal now with the man standing on the opposite side *\n  MAN: "I, DIO will condone you for your efforts for making it this far"\n  DIO: "But it is futile, and your journey ends here"
 boss_stone_used=* You used the glowing stone that you have and it started to glow frantically as it shot a red ray of beam onto DIO (dealing 9999999dmg?) *\n* It completely vaporised him *
-
-
+ending_dio=* As you defeated DIO and headed further inside the mansion, a shining light flashes before you and you quickly realized that yet another portal had opened. *\n* Would you like to enter the portal? *
+ending_dig=* TODO: DIG ENDING *
+ending_two=Game Finished! Yay!
+ft_1=* Orb: th're shouldst beest a well residing within these woods which shouldst answ'r thee qu'ries. *
+ft_2=* Orb: Th're is only one way out of this f'rest which is guardeth by a pow'rful entity which couldst only beest defeat'd by a legendary item which rest deep within these lands. *
+ft_3=* Orb: the pow'r emitting from yond bodkin shouldst has't the pow'r to taketh on a whole village. *
+ft_4=* Orb: Yond thing in thy pocket is the key to findeth the exit out of these woods but the entity wouldst beest awaiting thee th're. *
+ft_s=* As you walk down the path that leads to the dark forest you sense some sort of unpleasant aura surrounding you. As you proceed you find a small tent at the end of the path. *\n* The moment you entered the tent you notice a desk in front of you with an orb resting on top of the desk. As you approach further in the tent the orb started speaking to you. *
+ft_e=* The orb’s color dims slightly, and your surroundings are suddenly filled with grey smoke which covers your vision. The next second you find yourself standing outside the tent. *\n* You choose to head South and exit the dark forest *
