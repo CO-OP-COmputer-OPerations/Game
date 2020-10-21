@@ -26,7 +26,7 @@ public class MainGame extends Scene
         for (String line : logo.replace("\r", "").split("\n"))
         {
             System.out.println(line);
-            //Helpers.sleep(100);
+            Helpers.sleep(100);
         }
 
         Options.add("Exit");
@@ -43,6 +43,7 @@ public class MainGame extends Scene
         {
             // Game Completed
             exitScene();
+            return;
         }
 
         UpdateDirectionOptions();
@@ -90,7 +91,10 @@ public class MainGame extends Scene
                 break;
             case "shovel":
                 if (game.player.hasItem("shovel"))
+                {
                     game.map.processMapTile(game.player, Action.Dig);
+                    return true;
+                }
                 return false;
             case "debug":
                 if (!game.player.hasItem("knife"))

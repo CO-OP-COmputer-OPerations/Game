@@ -15,6 +15,7 @@ public class Map
     public boolean isDoorOpen = false;
     public boolean isDioDead = false;
     public boolean isGameCompleted = false;
+    public int digCount = 0;
 
     public enum Locations
     {
@@ -94,6 +95,7 @@ public class Map
                 case Fortune_Teller:
                     // Tell things
                     System.out.println(Helpers.Localise("ft_s"));
+                    System.out.println();
                     if (player.hasItem("knife") && !((ItemKnife)player.getItem("knife")).enchanted)
                     {
                         System.out.println(Helpers.Localise("ft_1"));
@@ -106,6 +108,7 @@ public class Map
                     {
                         System.out.println(Helpers.Localise("ft_3"));
                     }
+                    System.out.println();
                     System.out.println(Helpers.Localise("ft_e"));
                     Helpers.sleep(2000);
                     // TODO: Try not hardcode positions
@@ -223,9 +226,17 @@ public class Map
                     player.inventory.add(new ItemLegendaryRock());
                     System.out.println(Helpers.Localise("shovel_got_a_rock"));
                 }
-                else
-                    // Do second ending
-                    System.out.println("TODO: DO SECOND ENDING");
+                else if (player.hasItem("shovel"))
+                {
+                    ++digCount;
+                    System.out.println(Helpers.Localise("shovel_dig_again"));
+                    if (digCount == 5)
+                    {
+                        player.positionX = 4;
+                        player.positionY = 0;
+                        processMapTile(player, Action.Walk);
+                    }
+                }
             }
             else
                 System.out.println(Helpers.Localise("shovel_not_a_rock"));
