@@ -19,6 +19,7 @@ public class MainMenu extends Scene
         {
             case "start":
                 Scene.startScene(new MainGame(new Game()));
+                System.out.println(Helpers.readTextFile("mainMenu.txt"));
                 break;
             case "instructions":
                 System.out.println(Helpers.readTextFile("instructions.txt"));
