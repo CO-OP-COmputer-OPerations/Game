@@ -40,3 +40,8 @@ door_closed=* As you keep walking you encounter a massive wooden door blocking y
 door_question=* Would you like to use the crowbar? *
 door_question_y=* You start swinging the crowbar at the door until it eventually opens. Then proceeds to head East *
 door_question_n=* You decided not to use the crowbar and leave the door alone. *\n* You return west from where you came from. *
+boss_dialogue_1=* As you pass the gates you feel a strong pressure coming from the inside of the mansion (or tents LOL) *\n* You take one step into the mansion *\n  MAN: "Oh, so you are approaching me"\n* As he speaks, chills are sent down your spine *\n* You continued to walk for a bit, soon after the man starts to also approach you *
+boss_dialogue_2=* You were upfront and personal now with the man standing on the opposite side *\n  MAN: "I, DIO will condone you for your efforts for making it this far"\n  DIO: "But it is futile, and your journey ends here"
+boss_stone_used=* You used the glowing stone that you have and it started to glow frantically as it shot a red ray of beam onto DIO (dealing 9999999dmg?) *\n* It completely vaporised him *
+
+

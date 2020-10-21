@@ -2,7 +2,9 @@ package game.scenes;
 
 import game.*;
 import game.item.Item;
+import game.item.ItemCrowbar;
 import game.item.ItemKnife;
+import game.item.ItemShovel;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,8 @@ public class MainGame extends Scene
         Options.add("Exit");
         Options.add("Inventory");
         Options.add("Debug");
+        if (game.player.hasItem("shovel"))
+            Options.add("Shovel");
         System.out.printf(Helpers.Localise("gameStartText"), "F");
         System.out.println();
     }
@@ -41,6 +45,8 @@ public class MainGame extends Scene
         showPositionMessage();
         showDirectionOptions();
         game.map.setLocationVisited(game.player);
+        if (game.player.hasItem("shovel") && !Options.contains("Shovel"))
+            Options.add("Shovel");
     }
 
     @Override
@@ -85,8 +91,12 @@ public class MainGame extends Scene
                 if (!game.player.hasItem("knife"))
                 {
                     ItemKnife knife = new ItemKnife();
+                    ItemCrowbar crowbar = new ItemCrowbar();
+                    ItemShovel shovel = new ItemShovel();
                     knife.enchanted = true;
                     game.player.inventory.add(knife);
+                    game.player.inventory.add(crowbar);
+                    game.player.inventory.add(shovel);
                     game.player.money = 100000;
                 }
                 break;

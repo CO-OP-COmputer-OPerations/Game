@@ -3,10 +3,7 @@ package game;
 import game.item.Item;
 import game.item.ItemKnife;
 import game.item.ItemLegendaryRock;
-import game.scenes.SceneBattleBear;
-import game.scenes.SceneShop;
-import game.scenes.SceneSimpleDialog;
-import game.scenes.SceneVillage;
+import game.scenes.*;
 
 public class Map
 {
@@ -114,7 +111,16 @@ public class Map
                     }
                     break;
                 case Boss:
-                    // Boss
+                    if (!visitedLocations[player.positionX][player.positionY])
+                    {
+                        // Boss battle
+                        SceneBattleBoss battle = new SceneBattleBoss(player);
+                        Scene.startScene(battle);
+                        // TODO: Try not hardcode positions
+                        // Move left if dio didn't die
+                        if (!battle.battleCompleted)
+                            --player.positionX;
+                    }
                     break;
                 case Bear:
                     if (!visitedLocations[player.positionX][player.positionY])
