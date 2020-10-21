@@ -87,6 +87,7 @@ public class MainGame extends Scene
                     ItemKnife knife = new ItemKnife();
                     knife.enchanted = true;
                     game.player.inventory.add(knife);
+                    game.player.money = 100000;
                 }
                 break;
             default:

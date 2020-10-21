@@ -14,6 +14,9 @@ public class Map
     public int[][] mapCollisions = new int[5][5];
     public boolean[][] visitedLocations = new boolean[5][5];
 
+    // Map Data
+    public boolean isDoorOpen = false;
+
     public enum Locations
     {
         Empty,
@@ -25,7 +28,8 @@ public class Map
         Traveler,
         Bear,
         Wishing_Well,
-        Rock
+        Rock,
+        Door
     }
 
     public void loadMap(String path)
@@ -79,6 +83,36 @@ public class Map
                 case Fortune_Teller:
                     // Tell things
                     break;
+                case Door:
+                    // Door
+                    if (!isDoorOpen)
+                    {
+                        System.out.println(Helpers.Localise("door_closed"));
+                        if (player.hasItem("crowbar"))
+                        {
+                            switch (SceneSimpleDialog.OpenDialog(new SceneSimpleDialog("door_question", new String[]{"Yes", "No"})).toLowerCase())
+                            {
+                                case "yes":
+                                    System.out.println(Helpers.Localise("door_question_y"));
+                                    isDoorOpen = true;
+                                    break;
+                                case "no":
+                                    System.out.println(Helpers.Localise("door_question_n"));
+                                    // TODO: Try not hardcode positions
+                                    // Move left if the door didn't open
+                                    --player.positionX;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }else
+                        {
+                            // TODO: Try not hardcode positions
+                            // Move left if the door didn't open
+                            --player.positionX;
+                        }
+                    }
+                    break;
                 case Boss:
                     // Boss
                     break;
@@ -122,15 +156,19 @@ public class Map
                     break;
                 case Rock:
                     // Rock
-                    if (player.hasItem("legendary_rock"))
+                    if (!player.hasItem("shovel"))
+                    {
+                        // No Shovel
+                        System.out.println(Helpers.Localise("shovel_no_missing"));
+                    }else if (player.hasItem("legendary_rock"))
                     {
                         // Already dug the rock
-                        System.out.println(Helpers.Localise("a"));
+                        System.out.println(Helpers.Localise("shovel_revisiting"));
                     }
                     else
                     {
                         // Have not yet dug the rock
-                        System.out.println(Helpers.Localise("b"));
+                        System.out.println(Helpers.Localise("shovel_first_time"));
                     }
                     break;
                 default:
@@ -148,7 +186,7 @@ public class Map
                 }
                 else
                     // Do second ending
-                    System.out.println(Helpers.Localise(""));
+                    System.out.println("TODO: DO SECOND ENDING");
             }
             else
                 System.out.println(Helpers.Localise("shovel_not_a_rock"));
