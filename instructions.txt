@@ -18,7 +18,7 @@ or “Go (Up/Down/Right/Left)”
 
 You will then travel to your chosen destination, unless of course your chosen direction includes non-linear territory. Which is extremely dangerous and cannot be traversed by players. 
 
-Other interactions will be easy to engage with, most requiring a yes or no response (simply type y/n). 
+Other interactions will be easy to engage with, most requiring a single world response. 
 
 Your goal is to beat the boss to get the gold. 
 
